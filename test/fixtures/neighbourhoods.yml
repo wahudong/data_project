@@ -3,11 +3,9 @@
 one:
   name: MyString
   school_division: MyString
-  number_of_hospital: MyString
-  integer: MyString
+  number_of_hospital: 1
 
 two:
   name: MyString
   school_division: MyString
-  number_of_hospital: MyString
-  integer: MyString
+  number_of_hospital: 1

@@ -3,8 +3,7 @@ class CreateNeighbourhoods < ActiveRecord::Migration[6.0]
     create_table :neighbourhoods do |t|
       t.string :name
       t.string :school_division
-      t.string :number_of_hospital
-      t.string :integer
+      t.integer :number_of_hospital
 
       t.timestamps
     end

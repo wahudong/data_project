@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_07_142403) do
+ActiveRecord::Schema.define(version: 2019_10_07_144007) do
 
   create_table "electoral_wards", force: :cascade do |t|
     t.string "name"
@@ -23,8 +23,7 @@ ActiveRecord::Schema.define(version: 2019_10_07_142403) do
   create_table "neighbourhoods", force: :cascade do |t|
     t.string "name"
     t.string "school_division"
-    t.string "number_of_hospital"
-    t.string "integer"
+    t.integer "number_of_hospital"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
