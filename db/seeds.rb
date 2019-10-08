@@ -12,9 +12,9 @@ require 'open-uri'
 require 'json'
 
 # Electoral_ward.destroy_all
+ServiceRequest.destroy_all
 ElectoralWard.destroy_all
 Neighbourhood.destroy_all
-ServiceRequest.destroy_all
 
 # Fetch and decode JSON resources from the Star Wars API by URL.
 def data_fetch(url)
@@ -31,6 +31,14 @@ data_source.each do |d|
   neighbour = Neighbourhood.create(name: d['neighbourhood'],
                                    school_division: Faker::Address.community,
                                    number_of_hospital: rand(1..3))
+
+  ServiceRequest.create(date_time: d['sr_date'],
+                        service_area: d['service_area'],
+                        service_request: d['service_request'],
+                        latitude: d['location_1']['latitude'],
+                        longitude: d['location_1']['longitude'],
+                        Electoral_ward: ward,
+                        Neighbourhood: neighbour)
 end
 
 # puts ElectoralWard.all.to_s
@@ -38,8 +46,8 @@ end
 #   puts e.name.to_s
 # end
 
-Neighbourhood.all.each do |e|
-  puts e.name.to_s
+ServiceRequest.all.each do |x|
+  puts x.service_request.to_s
 end
 
 # Build the "person by id" people endpoint URL.
