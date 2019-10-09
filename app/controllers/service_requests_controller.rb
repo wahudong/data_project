@@ -2,7 +2,7 @@
 
 class ServiceRequestsController < ApplicationController
   def index
-    @requests = ServiceRequest.all
+    @requests = ServiceRequest.all.page(params[:page])
   end
 
   def show; end
