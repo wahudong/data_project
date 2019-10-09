@@ -23,7 +23,6 @@ end
 
 data_source = data_fetch('https://data.winnipeg.ca/resource/4her-3th5.json')
 data_source.each do |d|
-  # puts "name: #{d['neighbourhood']}"
   ward = ElectoralWard.create(name: d['ward'],
                               mla_name: Faker::Movies::HarryPotter.character,
                               mla_add: Faker::Address.street_address)
@@ -42,37 +41,17 @@ data_source.each do |d|
 end
 
 # puts ElectoralWard.all.to_s
+
 # ElectoralWard.all.each do |e|
-#   puts e.name.to_s
+#   e.service_requests.each do |s|
+#     puts s.service_request.to_s
+#   end
 # end
 
-ServiceRequest.all.each do |x|
-  puts x.service_request.to_s
-end
-
-# Build the "person by id" people endpoint URL.
-# def person_url(id)
-#  'https://swapi.co/api/people/' + id.to_s
+# ServiceRequest.all.each do |x|
+#   puts x.Electoral_ward.name.to_s
 # end
 
-# Format unordered dashed list of films.
-# def film_title_list(films)
-#   film_titles = films.map { |f| f['title'] }
-#   "- " + film_titles.join(" \n            - ")
-# end
-
-# Crawl people, planets, and films API endpoints for the first 15 characters.
-# character_ids = 1..15
-# character_ids.each do |character_id|
-#   person    = swapi_fetch(person_url(character_id))
-#   homeworld = swapi_fetch(person['homeworld'])
-#   films     = person['films'].map { |film_url| swapi_fetch(film_url) }
-
-# Print out character information.
-#   puts  "¸•°o.•º°    #{person['name'].ljust(18)}  °º•.o°•¸ \n\n"
-#   puts  "Born:       #{person['birth_year']}"
-#   print "Homeworld:  #{homeworld['name']} "
-#   puts  "(Population #{homeworld['population']})"
-#   puts  "Films:      #{film_title_list(films)}"
-#   puts  "\n\n\n"
+# ServiceRequest.all.each do |x|
+#   puts x.latitude.to_s
 # end
