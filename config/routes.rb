@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'neighbourhoods/index'
-  get 'neighbourhoods/show'
+  get 'electoral_wards/index'
+  get 'electoral_wards/show'
+  # get 'neighbourhoods/index'
+  # get 'neighbourhoods/show'
   # get 'service_requests/index'
   # get 'service_requests/show'
   # get 'aboutme/index'

@@ -1,2 +1,15 @@
-<h1>Neighbourhoods#show</h1>
-<p>Find me in app/views/neighbourhoods/show.html.erb</p>
+<h1>Detail of neighbourhood</h1>
+<p><spam style = "font-weight:bold">Neighbourhood name:</spam> <%=@neighbourhood.name%></p>
+<p><spam style = "font-weight:bold">School division:</spam> <%=@neighbourhood.school_division%></p>
+<p><spam style = "font-weight:bold">Number of hospital:</spam> <%=@neighbourhood.number_of_hospital%></p>
+<br>
+<br>
+<h2>Services requirements in this neighbourhood</h2>
+<%requests = @neighbourhood.service_requests%>
+<%=requests.count%>
+<%requests.each do |req|%>
+<p><spam style = "font-weight:bold">Service request:</spam> <%= link_to req.date_time, req%></p>
+<% end %>
+<br>
+<br>
+<p><%= link_to 'Home', root_path%>
