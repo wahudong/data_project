@@ -1,2 +1,8 @@
-<h1>ServiceRequests#show</h1>
-<p>Find me in app/views/service_requests/show.html.erb</p>
+<h1>Detail of service request</h1>
+<p><spam style = "font-weight:bold">Date of the request:</spam> <%=@request.date_time%></p>
+<p><spam style = "font-weight:bold">Service area:</spam> <%=@request.service_area%></p>
+<p><spam style = "font-weight:bold">Service request:</spam> <%=@request.service_request%></p>
+<p><spam style = "font-weight:bold">Electural Ward:</spam> <%=@request.Electoral_ward.name%></p>
+<p><spam style = "font-weight:bold">Neighbourhood:</spam> <%= link_to @request.Neighbourhood.name, @request.Neighbourhood%></p>
+<p><spam style = "font-weight:bold">Latitude of the request:</spam> <%=@request.latitude%></p>
+<p><spam style = "font-weight:bold">Longitude of the request:</spam> <%=@request.longitude%></p>

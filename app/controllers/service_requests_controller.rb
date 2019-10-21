@@ -5,5 +5,7 @@ class ServiceRequestsController < ApplicationController
     @requests = ServiceRequest.all.page(params[:page])
   end
 
-  def show; end
+  def show
+    @request = ServiceRequest.find(params[:id])
+  end
 end
