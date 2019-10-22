@@ -6,9 +6,9 @@
 <br>
 <h2>Services requirements in this neighbourhood</h2>
 <%requests = @neighbourhood.service_requests%>
-<%=requests.count%>
+<p><spam style = "font-weight:bold">Total numbers of the service request:</spam> <%=requests.count%></p>
 <%requests.each do |req|%>
-<p><spam style = "font-weight:bold">Service request:</spam> <%= link_to req.date_time, req%></p>
+<p><spam style = "font-weight:bold">Service request:</spam> <%= link_to req.service_request, req%></p>
 <% end %>
 <br>
 <br>

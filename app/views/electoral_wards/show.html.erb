@@ -1,2 +1,16 @@
-<h1>ElectoralWards#show</h1>
-<p>Find me in app/views/electoral_wards/show.html.erb</p>
+<h1>Detail of Ward</h1>
+<p><spam style="font-weight: bold">Name: </spam><%=@ward.name%></p>
+<p><spam style="font-weight: bold">MLA name: </spam><%=@ward.mla_name%></p>
+<p><spam style="font-weight: bold">MLA address: </spam><%=@ward.mla_add%></p>
+<br>
+<br>
+<br>
+<h1>Services related to this ward</h1>
+<p><spam style = "font-weight:bold">Total numbers of the service request:</spam> <%=@ward.service_requests.count%></p>
+
+<%@ward.service_requests.each do |req|%>
+    <p><spam style="font-weight: bold">Service request: </spam><%=link_to req.service_request, req%></p>
+<%end%>
+
+<!-- <p><spam style="font-weight: bold">Service request: </spam><%=link_to @ward.service_requests.first.service_request, root_path%></p> -->
+<br>
