@@ -1,10 +1,48 @@
-<h2>Search Results</h2>
+
 
 <% if @requests.empty? %>
   <p>
     Sorry your search for '<%= params[:keywords] %>' returned no results.
   </p>
 <% else %>
-  <%=@requests.first.service_request %>
-<% end %>
+  <!--<%=@requests.first.service_request %>-->
 
+<div class="container">
+
+    <h2>Service request Search</h2>
+
+    <%= form_tag search_results_path do %>
+    <%= text_field_tag :keywords %>
+    <%= submit_tag 'Search' %>
+    <% end %>
+    <h2>Search Results</h2>
+
+    <br>
+        <table class="table">
+            <thead class="table-head">
+                <tr>
+                    <th class="col-md-3">Date</th>
+                    <th class="col-md-2">Service area</th>
+                    <th class="col-md-2">Service request</th>
+                    <th class="col-md-2">Ward</th>
+                    <th class="col-md-2">Neighbourhood</th>
+                    <th class="col-md-1">Detail</th>
+                </tr>
+            </thead>
+            <tbody>
+
+               <% @requests.each do |req|%>
+                    <!-- <tr class="table-row pointer" onclick="location.href='/aboutme'"> -->
+                    <tr class="table-row pointer">
+                        <td> <%= req.date_time%> </td>
+                        <td> <%= req.service_area%> </td>
+                        <td> <%= req.service_request%> </td>
+                        <td> <%= req.Electoral_ward.name%> </td>
+                        <td> <%= req.Neighbourhood.name%> </td>
+                        <td> <%= link_to 'Detail', req%> </td>
+                    </tr>
+                <%end%>
+            </tbody>
+        </table>
+</div>
+<% end %>

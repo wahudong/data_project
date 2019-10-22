@@ -10,9 +10,9 @@ class ServiceRequestsController < ApplicationController
   end
 
   def search_results
-    @requests = ServiceRequest.where('service_request LIKE ?', "%#{params[:keywords]}%").page(params[:page])
+    @requests = ServiceRequest.where('service_request LIKE ?', "%#{params[:keywords]}%")
 
-    render :index if @requests
+    # render :index if @requests
   end
 
   # def search_results
