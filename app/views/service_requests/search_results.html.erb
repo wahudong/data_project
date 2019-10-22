@@ -4,6 +4,8 @@
   <p>
     Sorry your search for '<%= params[:keywords] %>' returned no results.
   </p>
+<% else %>
+  <%=@requests.first.service_request %>
+  <%redirect_to root_path%>
 <% end %>
 
-<%=@requests.first.service_request %>
