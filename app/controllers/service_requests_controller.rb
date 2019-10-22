@@ -8,4 +8,13 @@ class ServiceRequestsController < ApplicationController
   def show
     @request = ServiceRequest.find(params[:id])
   end
+
+  def search_results
+    @requests = ServiceRequest.where('service_request LIKE ?', "%#{params[:keywords]}%")
+  end
+
+  # def search_results
+    # Here we will be using the Product model to actually search.
+  #   @products = Product.where('name LIKE ?', "%#{params[:keywords]}%")
+  # end
 end

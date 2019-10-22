@@ -14,5 +14,8 @@ Rails.application.routes.draw do
   resources :neighbourhoods, only: %i[index show]
   resources :electoral_wards, only: %i[index show]
   root to: 'service_requests#index'
+
+  post 'search_results' => 'service_requests#search_results', :as => 'search_results'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

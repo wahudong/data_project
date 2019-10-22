@@ -1,0 +1,9 @@
+<h2>Search Results</h2>
+
+<% if @requests.empty? %>
+  <p>
+    Sorry your search for '<%= params[:keywords] %>' returned no results.
+  </p>
+<% end %>
+
+<%=@requests.first.service_request %>

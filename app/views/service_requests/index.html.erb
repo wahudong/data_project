@@ -1,5 +1,12 @@
 <div class="container">
    <h1>All the service request list</h1>
+    <h2>Service request Search</h2>
+
+    <%= form_tag search_results_path do %>
+    <%= text_field_tag :keywords %>
+    <%= submit_tag 'Search' %>
+    <% end %>
+
    <%=paginate @requests%>
     <br>
         <table class="table">
