@@ -1,14 +1,14 @@
 <h1>Detail of neighbourhood</h1>
-<p><spam style = "font-weight:bold">Neighbourhood name:</spam> <%=@neighbourhood.name%></p>
-<p><spam style = "font-weight:bold">School division:</spam> <%=@neighbourhood.school_division%></p>
-<p><spam style = "font-weight:bold">Number of hospital:</spam> <%=@neighbourhood.number_of_hospital%></p>
+<p><span style = "font-weight:bold">Neighbourhood name:</span> <%=@neighbourhood.name%></p>
+<p><span style = "font-weight:bold">School division:</span> <%=@neighbourhood.school_division%></p>
+<p><span style = "font-weight:bold">Number of hospital:</span> <%=@neighbourhood.number_of_hospital%></p>
 <br>
 <br>
 <h2>Services requirements in this neighbourhood</h2>
 <%requests = @neighbourhood.service_requests%>
-<p><spam style = "font-weight:bold">Total numbers of the service request:</spam> <%=requests.count%></p>
+<p><span style = "font-weight:bold">Total numbers of the service request:</span> <%=requests.count%></p>
 <%requests.each do |req|%>
-<p><spam style = "font-weight:bold">Service request:</spam> <%= link_to req.service_request, req%></p>
+<p><span style = "font-weight:bold">Service request:</span> <%= link_to req.service_request, req%></p>
 <% end %>
 <br>
 <br>
