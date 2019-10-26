@@ -6,3 +6,26 @@
 <p><span style = "font-weight:bold">Neighbourhood:</span> <%= link_to @request.Neighbourhood.name, @request.Neighbourhood%></p>
 <p><span style = "font-weight:bold">Latitude of the request:</span> <%=@request.latitude%></p>
 <p><span style = "font-weight:bold">Longitude of the request:</span> <%=@request.longitude%></p>
+
+<br>
+<br>
+<h3>Location:</h3>
+
+<h3>My Google Map</h3>
+    <!--The div element for the map -->
+    <div id="map"></div>
+    <script>
+        // Initialize and add the map
+        function initMap() {
+          // The location of Uluru
+          var uluru = {lat: <%=@request.latitude%>, lng: <%=@request.longitude%>};
+          // The map, centered at Uluru
+          var map = new google.maps.Map(
+              document.getElementById('map'), {zoom: 4, center: uluru});
+          // The marker, positioned at Uluru
+          var marker = new google.maps.Marker({position: uluru, map: map});
+        }
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyASkPQsHmn9ryWZ_5r8bWZu3usgOh51C7Y&callback=initMap">
+    </script>

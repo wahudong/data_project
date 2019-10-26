@@ -23,13 +23,30 @@ end
 
 data_source = data_fetch('https://data.winnipeg.ca/resource/4her-3th5.json')
 data_source.each do |d|
-  ward = ElectoralWard.create(name: d['ward'],
-                              mla_name: Faker::Movies::HarryPotter.character,
-                              mla_add: Faker::Address.street_address)
+  neighbour = Neighbourhood.find_or_create_by(name: d['neighbourhood']) do |x|
+    x.school_division = Faker::Address.community,
+                        x.number_of_hospital = rand(1..3)
+  end
 
-  neighbour = Neighbourhood.create(name: d['neighbourhood'],
-                                   school_division: Faker::Address.community,
-                                   number_of_hospital: rand(1..3))
+  # puts (d['ward']).to_s + '//////////////////////////////////////'
+  ward = ElectoralWard.find_or_create_by(name: d['ward']) do |x|
+    x.mla_name = Faker::Movies::HarryPotter.character,
+                 # x.mla_name = 'sample name',
+                 x.mla_add = Faker::Address.street_address
+  end
+
+  # 有时候导入的electoral_ward或者neighbourhood数据是空的，这时候就需要人为的创建一个内容为“No data”的记录用于生成下面的service_request记录。会出错。
+  # if ward.nil?
+  #   ward = ElectoralWard.create(name: 'No data',
+  #                               mla_name: 'No data',
+  #                               mla_add: 'No data')
+  # end
+
+  # if neighbour.nill?
+  #   neighbour = Neighbourhood.create(name: 'No data',
+  #                         school_division: 'No data',
+  #                     number_of_hospital: 'No data')
+  # end
 
   ServiceRequest.create(date_time: d['sr_date'],
                         service_area: d['service_area'],
@@ -39,6 +56,10 @@ data_source.each do |d|
                         Electoral_ward: ward,
                         Neighbourhood: neighbour)
 end
+
+puts 'Total electoral ward created: ' + ElectoralWard.all.count.to_s
+puts 'Total Service requests created: ' + ServiceRequest.all.count.to_s
+puts 'Total neighbourhood created: ' + Neighbourhood.all.count.to_s
 
 # puts ElectoralWard.all.to_s
 
